@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>App Peliculas</title>
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: sans-serif; 
+            background-color: #031B33 !important; 
+            color: #FFFFFF !important;           
+            margin: 0; 
+            padding: 20px;
+        }
+        
+        .hidden { 
+            display: none !important; 
+        }
+
+        .modal {
+            position: fixed !important;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background-color: #031B33 !important;
+            border: 2px solid #00CCFF !important;
+        }
+
+        .star-btn.active { 
+            color: #00CCFF !important; 
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <h1 class="text-center my-4">Buscador de Peliculas</h1>
+
+        <div class="search-container row g-2 justify-content-center align-items-center mb-5">
+            <div class="col-auto">
+                <label for="search-title" class="fw-bold m-0">Titulo:</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" id="search-title" placeholder="Ej. Titanic" class="form-control" style="width: 220px; background: transparent; color: white;">
+            </div>
+            <div class="col-auto">
+                <label for="search-year" class="fw-bold m-0">Ano:</label>
+            </div>
+            <div class="col-auto">
+                <input type="number" id="search-year" placeholder="Ej. 1997" class="form-control" style="width: 100px; background: transparent; color: white;">
+            </div>
+            <div class="col-auto">
+                <button id="search-btn" class="btn btn-outline-info fw-bold">Buscar</button>
+            </div>
+            <div class="col-auto">
+                <button id="clear-inputs-btn" class="btn btn-outline-info fw-bold">Borrar</button>
+            </div>
+        </div>
+
+        <div id="movie-detail-section" class="row g-4 hidden">
+            
+            <div class="col-md-6">
+                <div id="modal-info-block" class="p-3 border border-secondary rounded rgba(255,255,255,0.02)">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="p-3 border border-secondary rounded rgba(255,255,255,0.02)">
+                    
+                    <div class="rating-section mb-4">
+                        <h3>Califica esta pelicula</h3>
+                        <div id="stars-selector" class="fs-4 my-2">
+                            <span class="star-btn" data-value="1" style="cursor: pointer; color: #555;">&#9733;</span>
+                            <span class="star-btn" data-value="2" style="cursor: pointer; color: #555;">&#9733;</span>
+                            <span class="star-btn" data-value="3" style="cursor: pointer; color: #555;">&#9733;</span>
+                            <span class="star-btn" data-value="4" style="cursor: pointer; color: #555;">&#9733;</span>
+                            <span class="star-btn" data-value="5" style="cursor: pointer; color: #555;">&#9733;</span>
+                        </div>
+                        <p id="star-description-text" class="fw-bold small text-white">Haz clic en una estrella</p>
+                    </div>
+
+                    <div class="comments-section border-top pt-3">
+                        <h3 class="mb-3">Comentarios</h3>
+                        <form id="comment-form" class="vstack gap-2">
+                            <input type="text" id="comment-user" placeholder="Tu nombre" class="form-control" style="background: transparent; color: white;" required>
+                            <textarea id="comment-text" placeholder="Escribe tu comentario aqui..." class="form-control" style="background: transparent; color: white;" required></textarea>
+                            <button type="submit" class="btn btn-sm btn-outline-info fw-bold align-self-start mt-1">Publicar</button>
+                        </form>
+                        
+                    <div id="comments-list" class="mt-4"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div> 
+
+    </div> 
+
+    <script src="app.js"></script>
+</body>
+</html>
